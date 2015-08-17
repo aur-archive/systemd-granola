@@ -1,0 +1,9 @@
+post_install() {
+    modprobe {acpi-cpufreq,cpufreq-userspace}
+    systemctl enable granola{,-connect}.service
+    systemctl start granola{,-connect}.service
+}
+
+pre_remove() {
+    systemctl stop granola{,-connect}.service
+}
